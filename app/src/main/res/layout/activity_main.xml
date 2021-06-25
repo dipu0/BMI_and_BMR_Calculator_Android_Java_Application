@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="2dp"
+    tools:context=".MainActivity">
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/myAdView_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-1127374896631754/3116281334">
+    </com.google.android.gms.ads.AdView>
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:layout_below="@id/myAdView_1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/inputBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:theme="@style/Theme.MaterialComponents.DayNight"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="5dp"
+                        app:strokeColor="@color/colorAccent"
+                        app:strokeWidth="5dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:paddingLeft="5dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_horizontal"
+                                android:padding="5dp"
+                                android:text="Age (years)"
+                                android:textColor="#154"
+                                android:textSize="25sp" />
+
+                            <EditText
+                                android:id="@+id/age"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_horizontal"
+                                android:hint="22"
+                                android:inputType="number|numberDecimal"
+                                android:maxLength="3"
+                                android:padding="3dp"
+                                android:textSize="45sp" />
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:theme="@style/Theme.MaterialComponents.DayNight"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="5dp"
+                        app:strokeColor="@color/colorAccent"
+                        app:strokeWidth="5dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingLeft="5dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:padding="5dp"
+                                android:text="Weight (kg)"
+                                android:textColor="#154"
+                                android:textSize="25sp" />
+
+                            <EditText
+                                android:id="@+id/weight"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_horizontal"
+                                android:hint="60 kg"
+                                android:inputType="number|numberDecimal"
+                                android:maxLength="3"
+                                android:padding="3dp"
+                                android:textSize="45sp" />
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:theme="@style/Theme.MaterialComponents.DayNight"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="5dp"
+                    app:strokeColor="@color/colorAccent"
+                    app:strokeWidth="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:paddingLeft="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="Height"
+                            android:textColor="#154"
+                            android:textSize="25sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="24dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="5dp"
+                                android:text="ft"
+                                android:textSize="25sp" />
+
+                            <EditText
+                                android:id="@+id/heightFt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:hint="5"
+                                android:inputType="number"
+                                android:maxLength="1"
+                                android:padding="3dp"
+                                android:textSize="45sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="5dp"
+                                android:text="in"
+                                android:textSize="25sp" />
+
+                            <EditText
+                                android:id="@+id/heightIn"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:hint="11''"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:padding="3dp"
+                                android:textSize="45sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="I'm"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPurple_900"
+                    android:textSize="55dp" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:theme="@style/Theme.MaterialComponents.DayNight"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="5dp"
+                    app:strokeColor="@color/colorAccent"
+                    app:strokeWidth="5dp">
+
+                    <RadioGroup
+                        android:id="@+id/radioattendgroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <RadioButton
+                            android:id="@+id/radiomale"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/colorAmber_A400"
+                            android:drawableLeft="@drawable/man"
+                            android:text=" Male"
+                            android:textColor="#154"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <RadioButton
+                            android:id="@+id/radiofemale"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/colorAmber_A400"
+                            android:drawableLeft="@drawable/female"
+                            android:text=" Female"
+                            android:textColor="#154"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </RadioGroup>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <Button
+                    android:id="@+id/calo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/transparent_round"
+                    android:padding="10dp"
+                    android:text="Your daily Activity level"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <Button
+                    android:id="@+id/calc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/calculate_btn"
+                    android:ems="8"
+                    android:padding="5dp"
+                    android:text="Calculate"
+                    android:textSize="30dp"
+                    android:textColor="@color/colorAccent"
+                    android:textStyle="bold"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
+
