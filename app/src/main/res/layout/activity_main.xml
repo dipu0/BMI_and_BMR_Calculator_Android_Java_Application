@@ -83,7 +83,7 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center_horizontal"
                                 android:hint="22"
-                                android:inputType="number|numberDecimal"
+                                android:inputType="number"
                                 android:maxLength="3"
                                 android:padding="3dp"
                                 android:textSize="45sp" />
@@ -124,9 +124,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_horizontal"
-                                android:hint="60 kg"
+                                android:hint="60"
                                 android:inputType="number|numberDecimal"
-                                android:maxLength="3"
+                                android:maxLength="5"
                                 android:padding="3dp"
                                 android:textSize="45sp" />
 

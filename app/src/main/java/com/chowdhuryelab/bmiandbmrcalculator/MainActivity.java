@@ -28,8 +28,15 @@ public class MainActivity extends AppCompatActivity {
     private EditText age;
     private EditText heightFt,heightIn;
     private EditText weight;
+
     Button btnPopup,btn,btnPopupCALO;
     private AdView myAdView_1;
+
+    private double bmi;
+    private double bmr;
+
+    private String bmiTxt;
+    private String gender;
 
     RadioButton radiomale,radiofemale;
 
@@ -72,14 +79,14 @@ public class MainActivity extends AppCompatActivity {
                 switch (i){
                     case R.id.radiomale:
 
-                        Global_Data.gender="Male";
-                        Toast.makeText(getApplicationContext(),"Select:-"+radiomale.getText().toString(),Toast.LENGTH_LONG).show();
+                        gender="Male";
+                        Toast.makeText(getApplicationContext(),"Select:-"+radiomale.getText().toString(),Toast.LENGTH_SHORT).show();
 
                         break;
                     case R.id.radiofemale:
 
-                        Global_Data.gender="Female";
-                        Toast.makeText(getApplicationContext(),"Select:-"+radiofemale.getText().toString(),Toast.LENGTH_LONG).show();
+                        gender="Female";
+                        Toast.makeText(getApplicationContext(),"Select:-"+radiofemale.getText().toString(),Toast.LENGTH_SHORT).show();
 
                         break;
                     default:
@@ -99,8 +106,8 @@ public class MainActivity extends AppCompatActivity {
                 //registering popup with OnMenuItemClickListener
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
+                        bmiTxt= String.valueOf(btnPopupCALO.getText());
                         btnPopupCALO.setText(item.getTitle());
-                        Global_Data.bmiTxt= String.valueOf(btnPopupCALO.getText());
                         return true;
                     }
                 });
@@ -116,82 +123,111 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    final int id = radioattend.getCheckedRadioButtonId();
 
-                    final String ageStr = age.getText().toString();
-                    final String weightStr = weight.getText().toString();
-                    final String heightFtStr = heightFt.getText().toString();
-                    final String heightInStr = heightIn.getText().toString();
+                    try {
 
-                    if (TextUtils.isEmpty(ageStr)) {
-                        age.setError("Empty");
-                        return;
-                    }
-                    if (TextUtils.isEmpty(weightStr)) {
-                        weight.setError("Empty");
-                        return;
-                    }
-                    if (TextUtils.isEmpty(heightFtStr)) {
-                        heightFt.setError("Empty");
-                        return;
+                    boolean error = false;
+
+                    int id = radioattend.getCheckedRadioButtonId();
+
+
+                    String ageStr = age.getText().toString();
+                    String weightStr = weight.getText().toString();
+                    String heightFtStr = heightFt.getText().toString();
+                    String heightInStr = heightIn.getText().toString();
+
+                    if (TextUtils.isEmpty(ageStr) || Integer.valueOf(ageStr) <= 0 || Integer.valueOf(ageStr) >= 150) {
+                        age.setError("Error");
+                        error = true;
+                        //return;
                     }
 
-                    if (TextUtils.isEmpty(heightInStr)) {
+                    if (TextUtils.isEmpty(weightStr) || Double.valueOf(weightStr) <= 0 || Double.valueOf(weightStr) >= 1000) {
+                        weight.setError("Error");
+                        error = true;
+                        //return;
+                    }
+                    if (TextUtils.isEmpty(heightFtStr) || Integer.valueOf(heightFtStr) <= 0) {
+                        heightFt.setError("Error");
+                        error = true;
+                        //return;
+                    }
+
+                    if (TextUtils.isEmpty(heightInStr) || Integer.valueOf(heightInStr) < 0 || Integer.valueOf(heightInStr) > 12) {
+                        heightIn.setError("Error");
                         heightIn.setText("0");
-                        return;
+                        //error = true;
+                        //return;
                     }
-
-                    final float ageValue = (float) (Float.parseFloat(ageStr));
-                    float heightFtValue = (float) Float.parseFloat(heightFtStr);
-                    float heightInValue = (float) Float.parseFloat(heightInStr);
-                    final float weightValue = Float.parseFloat(weightStr);
-
-                    // convert height into Me , cm
-                    final float heightValue_m = Float.parseFloat(String.format("%.2f", (((heightFtValue * 12.00) + heightInValue) / 39.37)));
-                    final float heightValue_Cm = Float.parseFloat(String.format("%.2f", (((heightFtValue * 12.00) + heightInValue) * 2.54)));
-
-                    Global_Data.bmi = weightValue / (heightValue_m * heightValue_m);
-
-                    if ("Male".equals(Global_Data.gender)) {
-
-                        Global_Data.bmr = ((10 * weightValue) + (6.25 * heightValue_Cm) - (5 * ageValue) + 5);
-
-                    } else if ("Female".equals(Global_Data.gender)) {
-
-                        Global_Data.bmr = ((10 * weightValue) + (6.25 * heightValue_Cm) - (5 * ageValue) - 161);
-                    }
-
-
                     if (id == -1) {
-                       // Select Gender
-
+                        // Select Gender
+                        error = true;
                         toastTextView.setText("Select Gender");
                         //toastImageView.setImageResource(R.drawable.drawable_red_gradient);
                         Toast toast = new Toast(getApplicationContext());
-                        toast.setDuration(Toast.LENGTH_LONG); // set the duration for the Toast
+                        toast.setDuration(Toast.LENGTH_SHORT); // set the duration for the Toast
                         toast.setView(layout); // set the inflated layout
                         toast.show();
                     }
-                    else
-                    {
-                        // one of the radio buttons is checked
-                        if(ageStr!=null && !"".equals(ageStr)&& heightFtStr != null && !"".equals(heightFtStr)
-                                && weightStr != null  &&  !"".equals(weightStr)){
+
+                    if (error == false) {
+
+
+                        int ageValue = (int) Integer.parseInt(ageStr);
+                        double heightFtValue = (double) Float.parseFloat(heightFtStr);
+                        double heightInValue = (double) Float.parseFloat(heightInStr);
+                        double weightValue = (double) Float.parseFloat(weightStr);
+
+                        // convert height into Me , cm
+                        float heightValue_m = (float) ((((heightFtValue * 12.0) + heightInValue) / 39.37));
+                        float heightValue_Cm = (float) ((((heightFtValue * 12.00) + heightInValue) * 2.54));
+
+                        bmi = weightValue / Math.pow(heightValue_m, 2);
+
+                        if ("Male".equals(gender)) {
+
+                            //Harris-Benedict(Revised)
+                            bmr = 88.362 + (13.397 * weightValue) + (4.799 * heightValue_Cm) - (5.667 * ageValue);
+
+                            //Mifflin- St Jeor
+                            //bmr = ((10 * weightValue) + (6.25 * heightValue_Cm) - (5 * ageValue) + 5);
+
+                        } else if ("Female".equals(gender)) {
+
+                            //Harris-Benedict(Revised)
+                            bmr = 447.593 + (9.247 * weightValue) + (3.098 * heightValue_Cm) - (4.330 * ageValue);
+
+                            //Mifflin- St Jeor
+                            //bmr = ((10 * weightValue) + (6.25 * heightValue_Cm) - (5 * ageValue) - 161);
+                        }
+
+                        if (ageStr != null && !ageStr.isEmpty() && heightFtStr != null && !heightFtStr.isEmpty() && weightStr != null && !weightStr.isEmpty()) {
+
+                            bmiTxt = btnPopupCALO.getText().toString();
 
                             Intent intent = new Intent(MainActivity.this, Main2Activity.class);
-                            Global_Data.bmiTxt= String.valueOf(btnPopupCALO.getText());
+
+                            intent.putExtra("BMI", bmi);
+                            intent.putExtra("BMR", bmr);
+                            intent.putExtra("Activity", bmiTxt);
+                            intent.putExtra("GENDER", gender);
+
                             startActivity(intent);
-
                         }
-                    }
 
+
+                    }
+                }catch(NullPointerException e){
+                        System.out.print("NullPointerException caught");
+                        Toast.makeText(getApplicationContext(),"Provide valid information",Toast.LENGTH_LONG).show();
+                    }
+                catch (NumberFormatException e){
+                        System.out.println("NumberFormatException caught");
+                        Toast.makeText(getApplicationContext(),"Provide valid information",Toast.LENGTH_LONG).show();
+                    }
 
                 }
             });
-
-
-        AppUpdateChecker appUpdateChecker=new AppUpdateChecker(this);  //pass the activity in constructure
-        appUpdateChecker.checkForUpdate(false); //mannual check false here
 
     }
 }

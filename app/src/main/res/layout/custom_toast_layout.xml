@@ -5,7 +5,7 @@
     android:background="#DAAA"
     android:orientation="horizontal"
     android:layout_gravity="center"
-    android:padding="8dp">
+    android:padding="2dp">
 
 
     <TextView
@@ -15,7 +15,7 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:textSize="25dp"
-        android:padding="10dp"
+        android:padding="5dp"
         android:background="@color/colorRed_A400"
         android:textColor="@color/colorAccent" />
 </FrameLayout>

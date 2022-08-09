@@ -23,10 +23,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:orientation="vertical"
         android:layout_gravity="center"
-        android:padding="3dp"
+        android:padding="2dp"
         android:gravity="center_horizontal">
 
         <TextView
@@ -34,8 +34,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:padding="3dp"
-            android:textSize="45sp" />
+            android:padding="2dp"
+            android:textSize="35sp" />
 
             <TextView
                 android:id="@+id/resultBMR"
@@ -43,14 +43,23 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:padding="3dp"
-                android:textSize="45sp"/>
+                android:textSize="35sp"/>
 
         <TextView
             android:id="@+id/calories_per_day"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textAlignment="center"
             android:padding="3dp"
-            android:textSize="20sp"/>
+            android:textSize="25sp"/>
+
+        <TextView
+            android:id="@+id/calories_summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
+            android:padding="3dp"
+            android:textSize="15sp"/>
 
         <ImageView
             android:id="@+id/img"
