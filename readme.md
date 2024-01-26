@@ -24,11 +24,9 @@ MAIN FEATURES:
 ## Icon
 <img src="screeenShots/icon_box.png" width="200"/>
 
-<!--
-## Demo
+## Download on Google Play
 
-![Demo](ScreenShot/) -->
-
+[![Download on Google Play](https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png)](https://play.google.com/store/apps/details?id=com.chowdhuryelab.bmiandbmrcalculator)
 
 ## Screenshots
 
